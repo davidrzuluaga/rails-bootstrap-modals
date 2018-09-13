@@ -1,9 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+published1:
+  name: frijol
+  price: 3.69
+  published: true
+published2:
+  name: frijol
+  price: 3.69
+  published: true
+not_published:
+  name: Arroz
   price: 9.99
-
-two:
-  name: MyString
-  price: 9.99
+  published: false
