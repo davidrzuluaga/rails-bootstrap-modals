@@ -1,9 +1,16 @@
 require 'test_helper'
 
 class ProductsControllerTest < ActionDispatch::IntegrationTest
-  test "get index: is successful" do
+
+  test "get index is successful if user is authenticated" do
+    sign_in users(:jc)
     get products_path
     assert_response :success
+  end
+
+  test "is redirected to login if user is not authenticated" do
+    get products_path
+    assert_response :redirect
   end
 
   test "post create: creates a product" do
