@@ -14,6 +14,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "post create: creates a product" do
+    sign_in users(:jc)
     assert_difference 'Product.count', 1 do
       post products_path, params: { product: { name: "product 1", published: true, price: 369 } }
     end
