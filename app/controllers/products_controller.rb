@@ -1,8 +1,9 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
 
   def index
     @products = Product.all
+
   end
 
   def alert_js
@@ -19,12 +20,6 @@ class ProductsController < ApplicationController
       format.html { redirect_to products_path }
     end
   end
-
-
-
-
-
-
 
   def edit
     @product = Product.find(params[:id])
