@@ -1,8 +1,10 @@
 class Api::V1::ProductsController < ApplicationController
     protect_from_forgery with: :null_session
+    before_action :basic_auth
+
     def index
         @products = Product.all
-        render json: @products
+        render json: { products: @products }
     end
 
     def create
@@ -31,9 +33,15 @@ class Api::V1::ProductsController < ApplicationController
     end
     
 
-    private
+  private
 
-      def product_params
-        params.require(:product).permit(:name, :price)
+    def product_params
+      params.require(:product).permit(:name, :price)
+    end
+
+    def basic_auth 
+      aunthenticate_or_request_with_http_basic do |user, password|
+        user == "david" && password == "test123"
       end
+    end
 end
