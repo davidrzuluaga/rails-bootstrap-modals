@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       resources :products
     end
   end
+  get 'authentication', to: 'users#authentication'
   devise_for :users
   resources :products
   root 'products#index'
